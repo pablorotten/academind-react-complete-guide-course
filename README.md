@@ -29,13 +29,63 @@ function App() {
   return (
     <div>
       <Header />
-      <main>
-        ...
-      </main>
+      ...
     </div>
   );
 }
 ```
+
+### Props
+
+Props are properties or parameters you can pass to `Components`.
+
+By default, all of them are added in the `prop` object.
+ 
+```jsx
+import componentsImg from './assets/components.png';
+
+function CoreConcept(props) {
+  return (
+    <li>
+      <img src={props.image} alt={props.title} />
+      <h3>{props.title}</h3>
+      <p>{props.description}</p>
+    </li>
+  );
+
+}
+
+...
+// usage
+function App() {
+  return (
+    ...
+    <section id="core-concepts">
+      <h2>Core Concepts</h2>
+      <ul>
+        <CoreConcept 
+          title="Components"
+          description="The core UI building block."
+          image={componentsImg}            
+        />
+      </ul>
+    </section>
+```
+
+You can specify what props you want with object destructuring:
+
+```jsx
+function CoreConceptWithObjectDestructuring({ title, description, image }) {
+  return (
+    <li>
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </li>
+  );
+}
+```
+
 
 ## Dynamic content
 
