@@ -224,9 +224,45 @@ export default function TabButton({ handleSelect }) {
 }
 ```
 
-## Update the UI
+# Update the UI
 
 > [!CAUTION]
 > Never use variables to update the UI! The initial value of the variable is going to be used to render the element. If a function changes the variable value **the UI is not going to be updated!** 
 
-### States
+## States
+We need to use Hooks. Those hooks:
+- Always used in **Components**
+- Use them in the top level of the **Component**
+
+### useState hook
+
+How to use `useState`:
+1. Import it: `import { useState } from "react";`
+2. Declare it in the top level of the **Component**: `const [state, setState] = useState("initialState");`
+  - Accepts as argument an initial value: `useState(0)`, `useState('Hello')`
+  - returns 2 elements, a variable and a function: 
+    - `state`: Variable with current state
+    - `setState`: Function to update the `state`
+3. Use `setState` function
+4. Render again the **Component** ➡️  ✅ This can be used to update the UI!
+
+```jsx
+import { useState } from "react"; // 
+
+function App() {
+  const [state, setState] = useState("Initial State");
+
+  function appFunction(newState) {
+    setSelectedTopic(newState);
+  }
+  return (
+    ...
+    <div>state</div>
+    ...
+    {/* Use `setState` directly in `onClick` event */}
+    <button onClick={() => setState("New State")}> Update the state</button>
+    {/* Pass `setState` to Component */}
+    <Component componentFunction={() => setState("New State")}>
+    {/* Pass a function that uses `setState` to Component */}
+    <Component appFunction={() => appFunction("New State")}>
+```

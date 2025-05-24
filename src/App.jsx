@@ -1,3 +1,4 @@
+import { useState } from "react";
 import componentsImg from "./assets/components.png";
 import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header.jsx";
@@ -6,8 +7,13 @@ import CoreConceptWithObjectDestructuring from "./components/CoreConceptWithObje
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  function printSelection(selectedButton) {
-    console.log("Selected button:", selectedButton);
+  const [selectedTopic, setSelectedTopic] = useState(
+    "Please click a button to see the selection."
+  );
+
+  function updateSelection(selectedButton) {
+    setSelectedTopic(selectedButton);
+    console.log("App updateSelection uses setSelectedTopic with:", selectedButton);
   }
 
   return (
@@ -37,14 +43,26 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton handleSelect={() => printSelection("components")}>
+            {/* Passing the function `updateSelection` which will use the `setState` function to update the `state` */}
+            <TabButton handleSelect={() => updateSelection("components")}>
               Components
             </TabButton>
-            <TabButton handleSelect={() => printSelection("jsx")}>JSX</TabButton>
-            <TabButton handleSelect={() => printSelection("props")}>Props</TabButton>
-            <TabButton handleSelect={() => printSelection("state")}>State</TabButton>
+            <TabButton handleSelect={() => updateSelection("jsx")}>
+              JSX
+            </TabButton>
+            {/* Directly passing the `setState` function */}
+            <TabButton handleSelect={() => setSelectedTopic("props")}>
+              Props
+            </TabButton>
+            <TabButton handleSelect={() => setSelectedTopic("state")}>
+              State
+            </TabButton>
+            {/* Not using any Component, directly set in `onClick` event the `setState` function */}
+            <li>
+              <button onClick={() => setSelectedTopic("setState in onClick 🏎️")}>🏎️ Fastest option</button>
+            </li>
           </menu>
-          Dynamic content goes here
+          {selectedTopic}
         </section>
       </main>
     </div>
