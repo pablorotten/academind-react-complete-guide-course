@@ -8,11 +8,28 @@ import CoreConceptWithObjectDestructuring from "./components/CoreConceptWithObje
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("components");
+  const [selectedTopic, setSelectedTopic] = useState();
 
   function updateSelection(selectedButton) {
     setSelectedTopic(selectedButton);
-    console.log("App updateSelection uses setSelectedTopic with:", selectedButton);
+    console.log(
+      "App updateSelection uses setSelectedTopic with:",
+      selectedButton
+    );
+  }
+
+  let tabContent = <p>Select a topic</p>;
+
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code.trim()}</code>
+        </pre>
+      </div>
+    );
   }
 
   return (
@@ -58,20 +75,12 @@ function App() {
             </TabButton>
             {/* Not using any Component, directly set in `onClick` event the `setState` function */}
             <li>
-              <button onClick={() => setSelectedTopic("formula1")}>Fast 🏎️</button>
+              <button onClick={() => setSelectedTopic("formula1")}>
+                Fast 🏎️
+              </button>
             </li>
           </menu>
-          <div id="tab-content">
-            <h3>{EXAMPLES[selectedTopic].title}</h3>
-            <p>
-              {EXAMPLES[selectedTopic].description}
-            </p>
-            <pre>
-              <code>
-                {EXAMPLES[selectedTopic].code.trim()}
-              </code>
-            </pre>
-          </div>
+          {tabContent}
         </section>
       </main>
     </div>

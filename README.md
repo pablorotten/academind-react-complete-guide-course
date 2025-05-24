@@ -266,3 +266,26 @@ function App() {
     {/* Pass a function that uses `setState` to Component */}
     <Component appFunction={() => appFunction("New State")}>
 ```
+
+### Conditional Rendering
+
+You can use states to decide what to render; even if `state` is not defined.
+
+This code will show a default view if `state` is not defined; and then will update the view when `setState` is used.
+
+```jsx
+function App() {
+  const [state, setState] = useState();
+
+  let content = <p>Default content</p>; 
+
+  // if state is defined, update the content; otherwise keep default
+  if (state) content = <p>{state} content</p>
+
+  return (
+    ...
+    <div>{content}</div>
+    ...
+  )
+}
+```
