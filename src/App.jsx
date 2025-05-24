@@ -60,17 +60,28 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {/* Passing the function `updateSelection` which will use the `setState` function to update the `state` */}
-            <TabButton handleSelect={() => updateSelection("components")}>
+            <TabButton
+              isSelected={(selectedTopic === "components")}
+              handleSelect={() => updateSelection("components")}
+            >
               Components
             </TabButton>
-            <TabButton handleSelect={() => updateSelection("jsx")}>
+            <TabButton
+              isSelected={selectedTopic === "jsx"}
+              handleSelect={() => updateSelection("jsx")}
+            >
               JSX
             </TabButton>
-            {/* Directly passing the `setState` function */}
-            <TabButton handleSelect={() => setSelectedTopic("props")}>
+            <TabButton
+              isSelected={selectedTopic === "props"}
+              handleSelect={() => updateSelection("props")}
+            >
               Props
             </TabButton>
-            <TabButton handleSelect={() => setSelectedTopic("state")}>
+            <TabButton
+              isSelected={selectedTopic === "state"}
+              handleSelect={() => updateSelection("state")}
+            >
               State
             </TabButton>
             {/* Not using any Component, directly set in `onClick` event the `setState` function */}

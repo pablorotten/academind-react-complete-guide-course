@@ -267,7 +267,7 @@ function App() {
     <Component appFunction={() => appFunction("New State")}>
 ```
 
-### Conditional Rendering
+### Conditional HTML Rendering
 
 You can use states to decide what to render; even if `state` is not defined.
 
@@ -285,6 +285,26 @@ function App() {
   return (
     ...
     <div>{content}</div>
+    ...
+  )
+}
+```
+
+### Conditional CSS
+
+Can use the `state` in a **Component** to add or remove a class:
+```jsx
+export default function Component({ condition }) {
+  return (
+    <div className={condition ? "active" : undefined}>Some stuff</div>
+  );
+
+function App() {
+  const [state, setState] = useState();
+
+  return (
+    ...
+    <Component condition={(state === true)}/>
     ...
   )
 }
