@@ -9,7 +9,7 @@ Links:
 
 ## Components
 
-Functions starting with Captital letter that returns a piece of html.
+Functions starting with Capital letter that returns a value that can be rendered.
 
 
 You call a component with this syntax: `<Component />`
@@ -37,14 +37,18 @@ function App() {
 }
 ```
 
-## Dynamic values
+## Dynamic content
 
-You can save elements in variables and use them in the html code:
-- Some text
-- The src of an image
+It's inside curly braces `{}`. Can be variables and functions.
 
 ```jsx
 import reactImg from './assets/react-core-concepts.png';
+
+const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max + 1);
+}
 
 function Header() {
   const description = "React Essentials";
@@ -53,5 +57,8 @@ function Header() {
     <header>
       <img src={reactImg} alt="Stylized atom" />
       <h1>{description}</h1>
-      ....
+      <p>
+        {reactDescriptions[getRandomInt(2)]} React concepts 
+      </p>
+    ...
 ```
