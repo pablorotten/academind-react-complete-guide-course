@@ -1,8 +1,12 @@
+import reactImg from './assets/react-core-concepts.png';
+
 function Header() {
+  const description = "React Essentials";
+
   return (
     <header>
-      <img src="src/assets/react-core-concepts.png" alt="Stylized atom" />
-      <h1>React Essentials</h1>
+      <img src={reactImg} alt="Stylized atom" />
+      <h1>{description}</h1>
       <p>
         Fundamental React concepts you will need for almost any app you are
         going to build!
