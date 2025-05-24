@@ -9,8 +9,7 @@ Links:
 
 ## Components
 
-Functions starting with Capital letter that returns a value that can be rendered.
-
+They're functions in **U**ppercase that returns a value that can be rendered.
 
 You call a component with this syntax: `<Component />`
 
@@ -37,9 +36,7 @@ function App() {
 
 ### Props
 
-Props are properties or parameters you can pass to `Components`.
-
-By default, all of them are added in the `prop` object.
+They're properties or parameters you can pass to `Components`. By default, all of them are added in the `prop` object.
  
 ```jsx
 import componentsImg from './assets/components.png';
@@ -72,7 +69,7 @@ function App() {
     </section>
 ```
 
-You can specify what props you want with object destructuring:
+You can specify what props you want with **object destructuring**. Then you don't need to use `prop` keyword:
 
 ```jsx
 function CoreConceptWithObjectDestructuring({ title, description, image }) {
@@ -89,7 +86,7 @@ function CoreConceptWithObjectDestructuring({ title, description, image }) {
 
 ## Dynamic content
 
-It's inside curly braces `{}`. Can be variables and functions.
+You can define variables and functions. Then you use it inside curly braces `{}`.
 
 ```jsx
 import reactImg from './assets/react-core-concepts.png';
