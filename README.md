@@ -84,6 +84,24 @@ function CoreConceptWithObjectDestructuring({ title, description, image }) {
 // same usage as before
 ```
 
+### Component composition: Children props
+
+When you use a `Component` opening and closing tags. The content inside is automatically assigned to the `props.children` property
+
+```jsx
+<Component>Content inside</Component>
+
+...
+function Component(props) { // props.children value is "Content inside"
+  return <div>{props.children}</div>
+}
+
+// can also use object destructuring
+function Component({children}) {
+  return <div>{children}</div>
+}
+```
+
 ## Good structure
 
 Each `Component` in a different file with all their dependencies.
