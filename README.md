@@ -84,7 +84,7 @@ function CoreConceptWithObjectDestructuring({ title, description, image }) {
 // same usage as before
 ```
 
-### Good structure
+## Good structure
 
 Each `Component` in a different file with all their dependencies.
 
@@ -113,8 +113,24 @@ export default function Header() { // ⬅️ Now with `export default`
 
 ### Styles
 
-Each component has it's own style.
+Each component has it's own style. It's placed next to it with the same name but css extension `Component.css`
 
+Header.css:
+```css
+header {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+header h1 {
+  ...
+```
+
+And then in `Header.jsx` we import it
+```jsx
+import './Header.css';
+...
+```
 
 
 ## Dynamic content

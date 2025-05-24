@@ -1,3 +1,5 @@
+import './CoreConcept.css';
+
 export default function CoreConceptWithObjectDestructuring({ title, description, image }) {
   return (
     <li>
