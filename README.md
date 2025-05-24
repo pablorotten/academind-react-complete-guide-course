@@ -23,7 +23,6 @@ function Header() {
 }
 
 ...
-
 function App() {
   return (
     <div>
@@ -81,7 +80,41 @@ function CoreConceptWithObjectDestructuring({ title, description, image }) {
     </li>
   );
 }
+
+// same usage as before
 ```
+
+### Good structure
+
+Each `Component` in a different file with all their dependencies.
+
+<img src="image.png" width="50%">
+
+- The URL of the `imports` depends on the location of the component
+- The constructor must go with `export default`
+
+
+
+```jsx
+import reactImg from '../assets/react-core-concepts.png'; // ⬅️ Updated url
+
+// ⬇️ All variables are functions that this Component needs
+const reactDescriptions = ...
+
+function getRandomInt(max) {...}
+}
+
+export default function Header() { // ⬅️ Now with `export default`
+  const description = ...
+
+  return (...);
+}
+```
+
+### Styles
+
+Each component has it's own style.
+
 
 
 ## Dynamic content
