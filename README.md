@@ -5,9 +5,8 @@ Links:
 - [Udemy](https://nside.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39648990#overview) 
 
 
-# Basics
 
-## Components
+# Components
 
 They're functions in **U**ppercase that returns a value that can be rendered.
 
@@ -33,7 +32,7 @@ function App() {
 }
 ```
 
-### Props
+## Props
 
 They're properties or parameters you can pass to `Components`. By default, all of them are added in the `prop` object.
  
@@ -84,7 +83,7 @@ function CoreConceptWithObjectDestructuring({ title, description, image }) {
 // same usage as before
 ```
 
-### Component composition: Children props
+## Component composition: Children props
 
 When you use a `Component` opening and closing tags. The content inside is automatically assigned to the `props.children` property
 
@@ -102,7 +101,7 @@ function Component({children}) {
 }
 ```
 
-## Good structure
+# Good structure
 
 Each `Component` in a different file with all their dependencies.
 
@@ -129,7 +128,7 @@ export default function Header() { // ⬅️ Now with `export default`
 }
 ```
 
-### Styles
+## Styles
 
 Each component has it's own style. It's placed next to it with the same name but css extension `Component.css`
 
@@ -151,7 +150,7 @@ import './Header.css';
 ```
 
 
-## Dynamic content
+# Dynamic content
 
 You can define variables and functions. Then you use it inside curly braces `{}`.
 
@@ -176,3 +175,5 @@ function Header() {
       </p>
     ...
 ```
+
+# Events
