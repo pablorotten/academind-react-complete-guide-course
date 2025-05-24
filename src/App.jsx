@@ -1,15 +1,14 @@
 import { useState } from "react";
 import componentsImg from "./assets/components.png";
 import { CORE_CONCEPTS } from "./data";
+import { EXAMPLES } from "./data";
 import Header from "./components/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import CoreConceptWithObjectDestructuring from "./components/CoreConceptWithObjectDestructuring.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState(
-    "Please click a button to see the selection."
-  );
+  const [selectedTopic, setSelectedTopic] = useState("components");
 
   function updateSelection(selectedButton) {
     setSelectedTopic(selectedButton);
@@ -59,10 +58,20 @@ function App() {
             </TabButton>
             {/* Not using any Component, directly set in `onClick` event the `setState` function */}
             <li>
-              <button onClick={() => setSelectedTopic("setState in onClick 🏎️")}>🏎️ Fastest option</button>
+              <button onClick={() => setSelectedTopic("formula1")}>Fast 🏎️</button>
             </li>
           </menu>
-          {selectedTopic}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>
+              {EXAMPLES[selectedTopic].description}
+            </p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code.trim()}
+              </code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
