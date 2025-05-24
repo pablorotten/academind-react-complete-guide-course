@@ -6,6 +6,10 @@ import CoreConceptWithObjectDestructuring from "./components/CoreConceptWithObje
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
+  function printSelection(selectedButton) {
+    console.log("Selected button:", selectedButton);
+  }
+
   return (
     <div>
       <Header />
@@ -33,11 +37,14 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-          <TabButton>Components</TabButton>
-          <TabButton>Components</TabButton>
-          <TabButton>Components</TabButton>
-          <TabButton>Components</TabButton>
+            <TabButton handleSelect={() => printSelection("components")}>
+              Components
+            </TabButton>
+            <TabButton handleSelect={() => printSelection("jsx")}>JSX</TabButton>
+            <TabButton handleSelect={() => printSelection("props")}>Props</TabButton>
+            <TabButton handleSelect={() => printSelection("state")}>State</TabButton>
           </menu>
+          Dynamic content goes here
         </section>
       </main>
     </div>

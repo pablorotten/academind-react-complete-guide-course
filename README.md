@@ -177,3 +177,56 @@ function Header() {
 ```
 
 # Events
+
+Add **events** to any `Component` using the `onSomething` events. Those events need a function to trigger when the event happens.
+
+```jsx
+export default function Component() {
+  function handleClick() { ... }
+    
+  return (
+      <button onClick={handleClick}></button>    
+  );
+}
+```
+
+You can make this more dynamic by passing this function as prop argument with custom parameters:
+- In `Parent` component:
+  - Define the function `myFunction() {...}`
+  - Instantiate the `Child` and pass as **prop** the function you defined `() => myFunction()`. Use anonymous function syntax.
+- In `Child` component:
+  - Expect the function `myFunction` as a **prop**
+  - Assign the function to an **event** for any element, like `onClick`.
+
+```jsx
+// Parent component: App.jsx
+function handleEvent(parameter) { console.log(parameter); }
+
+function App() {
+  function printSelection(selectedButton) {
+    console.log("Selected button:", selectedButton);
+  }
+
+  return (
+    ...
+    <TabButton handleSelect={() => printSelection("components")}>Components</TabButton>
+    <TabButton handleSelect={() => printSelection("jsx")}>JSX</TabButton>
+  );
+}
+
+// Child component: TabButton.jsx
+export default function TabButton({ handleSelect }) {
+  return (
+    ...
+      <button onClick={handleSelect}>Button</button>
+    ...
+  );
+}
+```
+
+## Update the UI
+
+> [!CAUTION]
+> Never use variables to update the UI! The initial value of the variable is going to be used to render the element. If a function changes the variable value **the UI is not going to be updated!** 
+
+### States
