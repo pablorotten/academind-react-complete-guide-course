@@ -133,7 +133,8 @@ function App() {
     ...
 ```
 
-And you can use this to render **Components** dynamically. If the JSON data matches with the **Component** props, it will be assigned automatically
+And you can use this to render **Components** dynamically. If the JSON data matches with the **Component** props, it will be assigned automatically.
+Remember to add a `key` so each element is unique.
 ```jsx
 // The Data
 DATA = [
@@ -155,7 +156,7 @@ export default function Component({title, description}) {
 function App() {
   ...
   <ul>
-    {DATA.map((item) => (<Component {...item}/>))}
+    {DATA.map((item) => (<Component key={item.title} {...item}/>))}
   </ul>
 }
 
