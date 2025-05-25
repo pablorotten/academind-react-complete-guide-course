@@ -47,7 +47,7 @@ function App() {
             />
             {/* Auto-generated core concepts */}
             {CORE_CONCEPTS.map((concept) => (
-              <CoreConcept {...concept} />
+              <CoreConcept key={concept.title} {...concept} />
             ))}
           </ul>
         </section>
