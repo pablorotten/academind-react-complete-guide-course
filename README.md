@@ -4,6 +4,21 @@ Links:
 - [Github](https://github.com/academind/react-complete-guide-course-resources/tree/main/attachments/03%20React%20Essentials)
 - [Udemy](https://nside.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39648990#overview) 
 
+## Table of contents 
+- [Academind: React complete guide](#academind-react-complete-guide)
+  - [Table of contents](#table-of-contents)
+- [Components](#components)
+  - [Props](#props)
+  - [Component composition: Children props](#component-composition-children-props)
+  - [Dynamic content](#dynamic-content)
+- [Good structure](#good-structure)
+  - [Styles](#styles)
+- [Events](#events)
+- [Update the UI](#update-the-ui)
+  - [States](#states)
+    - [useState hook](#usestate-hook)
+    - [Conditional HTML Rendering](#conditional-html-rendering)
+    - [Conditional CSS](#conditional-css)
 
 
 # Components
@@ -101,6 +116,51 @@ function Component({children}) {
 }
 ```
 
+## Dynamic content
+
+You can define variables and functions. Then you use it inside curly braces `{}` rendering.
+
+```jsx
+const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
+
+function getRandomInt(max) { ... }
+
+function App() {
+
+  return (
+    ...
+    <p>{reactDescriptions[getRandomInt(2)]}</p>
+    ...
+```
+
+And you can use this to render **Components** dynamically. If the JSON data matches with the **Component** props, it will be assigned automatically
+```jsx
+// The Data
+DATA = [
+  { title: "Title 1", description: "Description 1"},
+  { title: "Title 2", description: "Description 2"}
+]
+
+// The Component ...
+export default function Component({title, description}) {
+  return (
+    <li>
+      <h2> {title} </h2>
+      <p> {description} </p>
+    </li>
+  );
+}
+
+// ... and render dynamically
+function App() {
+  ...
+  <ul>
+    {DATA.map((item) => (<Component {...item}/>))}
+  </ul>
+}
+
+
+```
 # Good structure
 
 Each `Component` in a different file with all their dependencies.
@@ -147,33 +207,6 @@ And then in `Header.jsx` we import it
 ```jsx
 import './Header.css';
 ...
-```
-
-
-# Dynamic content
-
-You can define variables and functions. Then you use it inside curly braces `{}`.
-
-```jsx
-import reactImg from './assets/react-core-concepts.png';
-
-const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max + 1);
-}
-
-function Header() {
-  const description = "React Essentials";
-
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>{description}</h1>
-      <p>
-        {reactDescriptions[getRandomInt(2)]} React concepts 
-      </p>
-    ...
 ```
 
 # Events

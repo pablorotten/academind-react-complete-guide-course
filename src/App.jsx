@@ -1,7 +1,7 @@
 import { useState } from "react";
 import componentsImg from "./assets/components.png";
-import { CORE_CONCEPTS } from "./data";
-import { EXAMPLES } from "./data";
+import { CORE_CONCEPTS } from "./data.js";
+import { EXAMPLES } from "./data.js";
 import Header from "./components/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import CoreConceptWithObjectDestructuring from "./components/CoreConceptWithObjectDestructuring.jsx";
@@ -46,13 +46,8 @@ function App() {
               image={componentsImg}
             />
             {/* Auto-generated core concepts */}
-            {CORE_CONCEPTS.map((concept, index) => (
-              <CoreConcept
-                key={index}
-                title={concept.title}
-                description={concept.description}
-                image={concept.image}
-              />
+            {CORE_CONCEPTS.map((concept) => (
+              <CoreConcept {...concept} />
             ))}
           </ul>
         </section>
@@ -61,7 +56,7 @@ function App() {
           <menu>
             {/* Passing the function `updateSelection` which will use the `setState` function to update the `state` */}
             <TabButton
-              isSelected={(selectedTopic === "components")}
+              isSelected={selectedTopic === "components"}
               handleSelect={() => updateSelection("components")}
             >
               Components
